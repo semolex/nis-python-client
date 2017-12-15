@@ -6,7 +6,7 @@ Install all required dependencies into your `virtualenv` (if you wish to use it)
 ```pip install -r requirements.txt```
 ### Description ###
 Client implements methods from NEM API by calling appropriate method. 
-Method names are consist of API`s parent parts and related resources (where hyphens and slashes replced with underscore).
+Method names are consist of API parent parts and related resources (where hyphens and slashes replced with underscore).
 Its mean, that following API resource - `namespace/root/page` is implemented as `client.namespace.root_page` and `node/info` is `client.node.info`, etc.
 Almost all methods are implemented this way, except few that has either super-long names or duplicate names. Simply discover all methods to see exact namings.
 There is 6 API parent entities for usage:
