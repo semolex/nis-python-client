@@ -39,7 +39,7 @@ All responses are `requests.Response` objects from `requests` lib.
 You can perform all required manipulations after receiving them: convert to 
 JSON, check status code etc.
 
-Yiu also can perform call via `call` method from Client:
+You also can perform call via `call` method from Client:
 
 ```python
 from client import Client
