@@ -10,7 +10,7 @@ setup(
     author_email='semolex@live.com',
     description='Python client for NEM NIS API (https://nemproject.github.io)',
     install_requires=[
-        "requests",
-        "requests-mock"
+        "requests==2.18.4",
+        "requests-mock==1.4.0"
     ],
 )
