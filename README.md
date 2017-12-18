@@ -49,7 +49,8 @@ nis.call('GET', 'heartbeat')
 nis.call('GET', 'account/get', params={'address':'SOMEADDRESS'})
 nis.call('POST', 'chain/local/chain/blocks-after', payload={'height': 100})
 ```
-
+If you are looking for async stuff, read this:
+http://docs.python-requests.org/en/v0.10.6/user/advanced/#asynchronous-requests
 Have fun!
 
 
