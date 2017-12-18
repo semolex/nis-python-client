@@ -2,8 +2,8 @@ from unittest import TestCase
 
 import requests
 import requests_mock
-from nis import (Client, Account, BlockChain, Node, Namespace, Transaction,
-                 Debug)
+from nemnis import (Client, Account, BlockChain, Node, Namespace, Transaction,
+                    Debug)
 
 
 class TestClient(TestCase):
