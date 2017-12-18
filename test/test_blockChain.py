@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import requests
 import requests_mock
-from client import Client, BlockChain
+from nis import Client, BlockChain
 
 
 class TestBlockChain(TestCase):

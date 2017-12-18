@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import requests
 import requests_mock
-from client import Client, Namespace
+from nis import Client, Namespace
 
 
 class TestNamespace(TestCase):

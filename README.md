@@ -24,14 +24,20 @@ By default NIS uses `7890` port, you can initialize NIS client with other addres
 
 Examples of usage:
 ```python
-from client import Client
+from nis import Client
 
 nis = Client()
+
 hb = nis.heartbeat()
+
 print(hb.status_code)
+
 print(hb.json())
+
 acc = nis.account.get('NCKMNCU3STBWBR7E3XD2LR7WSIXF5IVJIDBHBZQT')
+
 print(acc.status_code)
+
 print(acc.json())
 
 ```
@@ -42,7 +48,7 @@ JSON, check status code etc.
 You also can perform call via `call` method from Client:
 
 ```python
-from client import Client
+from nis import Client
 
 nis = Client()
 nis.call('GET', 'heartbeat')

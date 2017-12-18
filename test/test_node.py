@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import requests
 import requests_mock
-from client import Client, Node
+from nis import Client, Node
 
 
 class TestNode(TestCase):
