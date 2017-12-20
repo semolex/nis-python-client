@@ -59,7 +59,7 @@ from nemnis import Client
 nis = Client()
 nis.call('GET', 'heartbeat')
 nis.call('GET', 'account/get', params={'address':'SOMEADDRESS'})
-nis.call('POST', 'chain/local/chain/blocks-after', payload={'height': 100})
+nis.call('POST', 'local/chain/blocks-after', payload={'height': 100})
 ```
 Also, each parent resource can be initialized separately by passing client instance as parameter:
 

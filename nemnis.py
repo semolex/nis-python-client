@@ -515,8 +515,8 @@ class BlockChain:
 
 class Node:
     """
-    Implements block chain related methods from API.
-    https://nemproject.github.io/#block-chain-related-requests
+    Implements node related methods from API.
+    https://nemproject.github.io/#node-related-requests
     """
     def __init__(self, client):
         self.name = 'node/'
