@@ -46,6 +46,13 @@ print(acc.status_code)
 
 print(acc.json())
 
+new_client =  Client('http://myaddress.com:8080')
+
+new_hb = new_client.heartbeat()
+
+print(new_hb.status_code)
+
+print(new_hb.json())
 ```
 All responses are `requests.Response` objects from [requests](http://docs.python-requests.org/en/master/) library.
 You can perform all required manipulations after receiving them: convert to 
