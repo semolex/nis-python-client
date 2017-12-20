@@ -4,7 +4,7 @@
 
 ----------
 
-**Requirements:**
+### Requirements:
 
 [requests](http://python-requests.org/en/master/)
 [requests-mock](http://requests-mock.readthedocs.io/en/latest/)
@@ -12,21 +12,21 @@
 ----------
 
 
-**Classes:**
+### Classes:
 
-[Account](#class-account)
+- #### [Account](#class-account)
 
-[BlockChain](#class-blockchain)
+- #### [BlockChain](#class-blockchain)
 
-[Client](#class-client)
+- #### [Client](#class-client)
 
-[Debug](#class-debug)
+- #### [Debug](#class-debug)
 
-[Namespace](#class-namespace)
+- #### [Namespace](#class-namespace)
 
-[Node](#class-node)
+- #### [Node](#class-node)
 
-[Transaction](#class-transaction)
+- #### [Transaction](#class-transaction)
 
 ----------
   
@@ -287,18 +287,17 @@ _Implements [block chain](https://nemproject.github.io/#block-chain-related-requ
    
 ### class **Client**
 
-_Class that represents main API client.  
-Make calls to NIS via related methods.  
-For all required information, please follow:  
+_Class that represents main API client.Make calls to NIS via related methods.  
+For all required information, please follow:_  
 [here](https://nemproject.github.io/).  
-All available methods documentation is also can be found there._  
+_All available methods documentation is also can be found there._  
  
 
 #### Methods:  
 
 - #### **\_\_init\_\_**(self, endpoint='http://127.0.0.1:7890')
 
-	_Initialize client._  
+	Initialize client. 
    
 	- **endpoint**: address of the NIS.
 
