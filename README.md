@@ -23,6 +23,7 @@ There is 6 API parent resource entities for usage:
 * Debug
 
 Extended code guide for available classes can be found [here](https://github.com/semolex/nis-python-client/blob/master/CODE_INFO.md).
+
 Few call can be used directly from `Client` instance.
 To perform calls to the NEM NIS API, ensure you have access to running NIS instance.
 By default NIS uses `7890` port, you can initialize NIS client with other address.
