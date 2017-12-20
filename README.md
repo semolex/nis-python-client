@@ -49,7 +49,8 @@ print(acc.status_code)
 
 print(acc.json())
 
-new_client =  Client('http://myaddress.com:8080')
+### You can connect to other nodes just by passing it address:
+new_client =  Client('http://157.7.223.222:7890')
 
 new_hb = new_client.heartbeat()
 

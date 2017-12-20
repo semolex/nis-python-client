@@ -722,4 +722,3 @@ class Debug:
         this information.
         """
         return self.client.call('GET', self.name + '/timers')
-
