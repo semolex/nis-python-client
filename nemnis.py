@@ -1,5 +1,30 @@
 import requests
 
+STATUS_LIST = [
+    "Unknown status",
+    "NIS is stopped.",
+    "NIS is starting.",
+    "NIS is running.",
+    "NIS is booting the local node (implies NIS is running).",
+    "The local node is booted (implies NIS is running).",
+    "The local node is synchronized (implies NIS is running and the local node is booted)",
+    "NIS local node does not see any remote NIS node (implies running and booted)",
+    "NIS is currently loading the block chain from the database. In this state NIS cannot serve any requests"
+]
+
+
+def explain_status(response):
+    """
+    Modifies status response to make it verbose.
+    Gets status message related to response code.
+
+    :param response: response from `client.status` resource.
+    :return: dict with modified status response
+    """
+    verbose = STATUS_LIST[response['code']]
+    response['verbose'] = verbose
+    return response
+
 
 class Client:
     """
@@ -9,6 +34,7 @@ class Client:
     https://nemproject.github.io/
     All available methods documentation is also can be found there.
     """
+
     def __init__(self, endpoint='http://127.0.0.1:7890'):
         """
         Initialize client.
@@ -112,6 +138,7 @@ class Account:
     Implements account related methods from API.
     https://nemproject.github.io/#account-related-requests
     """
+
     def __init__(self, client):
         self.name = 'account/'
         self.client = client
@@ -461,6 +488,7 @@ class BlockChain:
     Implements block chain related methods from API.
     https://nemproject.github.io/#block-chain-related-requests
     """
+
     def __init__(self, client):
         self.name = 'chain/'
         self.client = client
@@ -518,6 +546,7 @@ class Node:
     Implements node related methods from API.
     https://nemproject.github.io/#node-related-requests
     """
+
     def __init__(self, client):
         self.name = 'node/'
         self.client = client
@@ -601,6 +630,7 @@ class Namespace:
     Implements namespace related methods from API.
     https://nemproject.github.io/#namespaces-and-mosaics
     """
+
     def __init__(self, client):
         self.name = 'namespace/'
         self.client = client
@@ -654,6 +684,7 @@ class Transaction:
     According to documentation, should be used with care!
     https://nemproject.github.io/#initiating-transactions
     """
+
     def __init__(self, client):
         self.name = 'transaction/'
         self.client = client
@@ -688,6 +719,7 @@ class Debug:
     Implements requests for additional information from NIS.
     https://nemproject.github.io/#requests-for-additional-information-from-NIS
     """
+
     def __init__(self, client):
         self.name = 'debug/'
         self.client = client
@@ -722,3 +754,10 @@ class Debug:
         this information.
         """
         return self.client.call('GET', self.name + '/timers')
+
+
+c = Client()
+r = c.status()
+
+f = explain_status(r.json())
+print(f)

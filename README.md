@@ -33,11 +33,18 @@ By default NIS uses `7890` port, you can initialize NIS client with other addres
 
 Examples of usage:
 ```python
-from nemnis import Client
+from nemnis import Client, explain_status
 
 nis = Client()
 
 hb = nis.heartbeat()
+
+status = nis.status()
+
+print(status.json())
+
+# you can use following function to get verbose message for status
+print(explain_status(status.json()))  
 
 print(hb.status_code)
 
