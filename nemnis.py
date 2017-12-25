@@ -754,10 +754,3 @@ class Debug:
         this information.
         """
         return self.client.call('GET', self.name + '/timers')
-
-
-c = Client()
-r = c.status()
-
-f = explain_status(r.json())
-print(f)
