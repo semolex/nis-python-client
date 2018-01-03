@@ -1,4 +1,39 @@
-import requests
+__copyright__ = "2017 Oleksii Semeshchuk"
+__license__ = "License: MIT, see LICENSE."
+__version__ = "0.0.9"
+__author__ = "Oleksii Semeshchuk"
+__email__ = "semolex@live.com"
+
+'''
+    core
+    ----
+
+    Core module for the NIS client.
+
+    Describes an abstract base class for the client, along with various
+    helpers, to wrap the NIS API without specifying the actual
+    API for HTTP requests. Two primary clients wrap this base class:
+    a synchronous client (`Client`), using `requests` for HTTP requests,
+    and an asynchronous client (`AsyncioClient`), using `aiohttp` for
+    HTTP requests.
+'''
+
+import abc
+import six
+
+__all__ = [
+    'STATUS_LIST',
+    'LOCALHOST_ENDPOINT',
+    'explain_status',
+    'AbstractClient',
+    'Account',
+    'BlockChain',
+    'Node',
+    'Namespace',
+    'Transaction',
+    'Debug',
+]
+
 
 STATUS_LIST = [
     "Unknown status",
@@ -11,6 +46,8 @@ STATUS_LIST = [
     "NIS local node does not see any remote NIS node (implies running and booted)",
     "NIS is currently loading the block chain from the database. In this state NIS cannot serve any requests"
 ]
+
+LOCALHOST_ENDPOINT = 'http://127.0.0.1:7890'
 
 
 def explain_status(response):
@@ -26,39 +63,34 @@ def explain_status(response):
     return response
 
 
-class Client:
+@six.add_metaclass(abc.ABCMeta)
+class AbstractClient():
     """
-    Class that represents main API client.
+    Abstract base class that represents main API client.
     Make calls to NIS via related methods.
     For all required information, please follow:
     https://nemproject.github.io/
     All available methods documentation is also can be found there.
     """
 
-    def __init__(self, endpoint='http://127.0.0.1:7890'):
+    def __init__(self, endpoint):
         """
         Initialize client.
-
         :param endpoint: address of the NIS.
         """
         self.endpoint = endpoint
 
-    def call(self, method, name, params=None, payload=None, **kwargs):
+    @abc.abstractmethod
+    def call(self, method, name, params=None, payload=None, **kwds):
         """
         Make calls to the API via HTTP methods and passed params.
-        Methods that uses this method returns response object.
 
         :param method: HTTP method of the request.
         :param name: name of the API endpoint method. Appends to base URL.
         :param params: GET method params, used when method is GET.
         :param payload: POST method data, used when method is POST.
-        :param kwargs: any additional arguments.
-        :return: response object
+        :param kwds: any additional arguments.
         """
-        url = self.endpoint + '/' + name
-        resp = requests.request(method, url, params=params, json=payload,
-                                **kwargs)
-        return resp
 
     def heartbeat(self):
         """
