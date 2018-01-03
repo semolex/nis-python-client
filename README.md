@@ -121,5 +121,5 @@ status = nis.status()
 responses = nemnis.map([hb, status])
 print(nis.map([i.json() for i in responses]))
 ```
-
+Special thanks to [Alex Huszagh](https://github.com/Alexhuszagh) for contributing async client part.
 Have fun!
