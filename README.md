@@ -1,5 +1,6 @@
-# nis-python-client
-##### Python client for [NEM NIS API](https://nemproject.github.io). 
+# python-nis-client
+
+Python client for [NEM NIS API](https://nemproject.github.io). 
 
 ### Prerequisites
 
@@ -27,7 +28,6 @@ Extended code guide for available classes can be found [here](https://github.com
 Few call can be used directly from `Client` instance.
 To perform calls to the NEM NIS API, ensure you have access to running NIS instance.
 By default NIS uses `7890` port, you can initialize NIS client with other address.
-
 
 ### Usage
 
@@ -95,12 +95,31 @@ print(node_info.status_code)
 print(node_info.json())
 ```
 
-If you are looking for async stuff, please, read this:
-[asynchronous-requests](http://docs.python-requests.org/en/v0.10.6/user/advanced/#asynchronous-requests).
+### Asynchronous Usage
+
+On Python 3.4.2 and above, the python-nis-client supports asynchronous requests using the `aiohttp` library. Each method returns an asyncio coroutine returning a response object; otherwise, the API is identical to the standard client.
+
+Three helper functions are also provided for the asynchronous API:
+    - `loop()`          Returns the asyncio event loop.
+    - `run(future)`     Evaluate a single asyncio coroutine or future.
+    - `map(futures)`    Evaluate a sequence of asyncio coroutines or futures.
+
+Examples of usage:
+```python
+import nemnis
+
+# get our client
+nis = nemnis.AsyncioClient()
+
+# request a single NIS resource
+hb = nis.run(nis.heartbeat())
+print(nis.run(hb.json()))
+
+# request many NIS resources asynchronously
+hb = nis.heartbeat()
+status = nis.status()
+responses = nemnis.map([hb, status])
+print(nis.map([i.json() for i in responses]))
+```
 
 Have fun!
-
-
-
-
-
